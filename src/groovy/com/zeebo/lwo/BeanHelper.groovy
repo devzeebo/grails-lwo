@@ -23,7 +23,7 @@ class BeanHelper {
 
 	static def fromBean = { def bean ->
 
-		def clazz = delegate.class
+		def clazz = delegate
 		def obj = clazz."findBy${beanBuilderMap[clazz].keys.collect {String s -> "${s[0].toUpperCase()}${s.substring(1)}" }.join('And') }"(
 			beanBuilderMap[clazz].keys.collect { bean[it] }
 		)
