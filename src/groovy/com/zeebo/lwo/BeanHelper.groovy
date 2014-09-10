@@ -45,9 +45,10 @@ class BeanHelper {
 	static def toBean = {
 
 		def bean = [:]
+		def obj = delegate
 
-		(beanBuilderMap[delegate.class].keys + beanBuilderMap[delegate.class].copy).each {
-			bean[it] = delegate."${it}"
+		(beanBuilderMap[obj.class].keys + beanBuilderMap[obj.class].copy).each {
+			bean[it] = obj."${it}"
 		}
 
 		return bean
